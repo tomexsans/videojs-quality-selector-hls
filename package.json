@@ -36,8 +36,8 @@
     "prepublishOnly": "npm-run-all build-prod && vjsverify --verbose --skip-es-check"
   },
   "engines": {
-    "node": ">=14",
-    "npm": ">=6"
+    "node": ">=19",
+    "npm": ">=9"
   },
   "keywords": [
     "videojs",
