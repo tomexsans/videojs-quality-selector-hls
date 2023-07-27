@@ -1,6 +1,6 @@
 {
   "name": "videojs-quality-selector-hls",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "This is a Plugin For VideoJS 8+ To select Quality on the Video if available",
   "main": "cjs/plugin.js",
   "module": "es/plugin.js",
@@ -96,5 +96,16 @@
     "videojs-generate-rollup-config": "~7.0.1",
     "videojs-generator-verify": "~4.0.0",
     "videojs-standard": "^9.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomexsans/videojs-quality-selector-hls.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tomexsans/videojs-quality-selector-hls/issues"
+  },
+  "homepage": "https://github.com/tomexsans/videojs-quality-selector-hls#readme"
 }
