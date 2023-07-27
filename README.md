@@ -1,10 +1,22 @@
 # videojs-quality-selector-hls
 
+[![ci](https://github.com/tomexsans/videojs-quality-selector-hls/actions/workflows/ci.yml/badge.svg)](https://github.com/tomexsans/videojs-quality-selector-hls/actions/workflows/ci.yml)
+
+
+[![codecov](https://codecov.io/gh/tomexsans/videojs-quality-selector-hls/branch/main/graph/badge.svg?token=OJXK9JBESI)](https://codecov.io/gh/tomexsans/videojs-quality-selector-hls)
+
 This is a Plugin For VideoJS 8+ To select Quality on the Video if available
 
 This is a FORK FROM https://github.com/chrisboustead/videojs-hls-quality-selector
 
 Updated Dependencies and made it to work for `Videojs 8`
+
+
+## Dependencies
+
+```sh
+npm install --save
+```
 
 ## Table of Contents
 
