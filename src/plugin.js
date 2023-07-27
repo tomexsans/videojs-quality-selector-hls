@@ -6,7 +6,11 @@ import ConcreteMenuItem from './ConcreteMenuItem';
 const Plugin = videojs.getPlugin('plugin');
 
 // Default options for the plugin.
-const defaults = {};
+const defaults = {
+  vjsIconClass: 'vjs-icon-hd',
+  displayCurrentQuality: false,
+  placementIndex: 0
+};
 
 /**
  * An advanced Video.js plugin. For more information on the API
@@ -33,14 +37,8 @@ class QualitySelectorHls extends Plugin {
 
     super(player);
 
-    const defaults = {
-      vjsIconClass: 'vjs-icon-hd',
-      displayCurrentQuality: false,
-      placementIndex: 0
-    }
-
     this.player = player;
-    this.config = videojs.obj.merge(defaults,options);
+    this.config = videojs.obj.merge(defaults, options);
 
     this.player.ready(() => {
       this.player.addClass('vjs-quality-selector-hls');
@@ -80,12 +78,14 @@ class QualitySelectorHls extends Plugin {
     const concreteButtonInstance = player.controlBar.addChild(
       this._qualityButton,
       { componentClass: 'qualitySelector' },
-      this.config.placementIndex || placementIndex );
+      this.config.placementIndex || placementIndex
+    );
 
     concreteButtonInstance.addClass('vjs-quality-selector');
 
     if (!this.config.displayCurrentQuality) {
       const icon = ` ${this.config.vjsIconClass || 'vjs-icon-hd'}`;
+
       concreteButtonInstance
         .menuButton_.$('.vjs-icon-placeholder').className += icon;
     } else {
@@ -94,11 +94,11 @@ class QualitySelectorHls extends Plugin {
     concreteButtonInstance.removeClass('vjs-hidden');
   }
   /**
-   *Set inner button text.
-   *
-   * @param {string} text - the text to display in the button.
-   */
-   setButtonInnerText(text) {
+  *Set inner button text.
+  *
+  * @param {string} text - the text to display in the button.
+  */
+  setButtonInnerText(text) {
     this._qualityButton
       .menuButton_.$('.vjs-icon-placeholder').innerHTML = text;
   }
