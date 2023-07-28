@@ -7,18 +7,23 @@
 
 This is a Plugin For VideoJS 8+ To select Quality on the Video if available
 
-This is a FORK FROM https://github.com/chrisboustead/videojs-hls-quality-selector
+This is a complete FORK by https://github.com/chrisboustead from https://github.com/chrisboustead/videojs-hls-quality-selector
 
-Updated Dependencies and made it to work for `Videojs 8`
 
+Changelog
+
+- updated to work for VideoJS 8
+- pulled plugin source code from https://github.com/videojs/generator-videojs-plugin
+
+## Table of Contents
 
 ## Dependencies
 
-```sh
-npm install --save
-```
+`videojs-contrib-quality-levels ^4`
 
-## Table of Contents
+```sh
+npm i videojs-contrib-quality-levels
+```
 
 <!-- START doctoc -->
 <!-- END doctoc -->
@@ -74,6 +79,32 @@ require(['video.js', 'videojs-quality-selector-hls'], function(videojs) {
   player.qualitySelectorHls();
 });
 ```
+
+## Options
+
+### displayCurrentQuality - `boolean` - _false_
+
+Set to true to display the currently selected resolution in the menu button.  When not enabled, displayed an included VJS "HD" icon.
+
+### placementIndex - `integer`
+
+Set this to override the default positioning of the menu button in the control bar relative to the other components in the control bar.
+
+### vjsIconClass `string` - _"vjs-icon-hd"_
+
+Set this to one of the custom VJS icons ([https://videojs.github.io/font/](https://videojs.github.io/font/)) to override the icon for the menu button.
+
+
+```js
+  var player = videojs('my-video');
+
+  player.qualitySelectorHls({
+    displayCurrentQuality: true,
+    placementIndex: 2,
+    vjsIconClass: 'vjs-icon-hd'
+  });
+```
+
 
 ## License
 
