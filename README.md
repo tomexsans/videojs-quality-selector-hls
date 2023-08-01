@@ -25,8 +25,22 @@ Changelog
 npm i videojs-contrib-quality-levels
 ```
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [`<script>` Tag](#script-tag)
+  - [Browserify/CommonJS](#browserifycommonjs)
+  - [RequireJS/AMD](#requirejsamd)
+  - [ES IMPORTS](#es-imports)
+- [Options](#options)
+  - [displayCurrentQuality - `boolean` - _false_](#displaycurrentquality---boolean---_false_)
+  - [placementIndex - `integer`](#placementindex---integer)
+  - [vjsIconClass `string` - _"vjs-icon-hd"_](#vjsiconclass-string---_vjs-icon-hd_)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ## Installation
 
 ```sh
@@ -79,6 +93,20 @@ require(['video.js', 'videojs-quality-selector-hls'], function(videojs) {
   player.qualitySelectorHls();
 });
 ```
+
+### ES IMPORTS
+
+for some reasons es imports has an error
+
+```
+class constructors must be invoked with 'new'
+```
+this is how videojs Handles the imports via the Plugin, for the mean time importing the min file directly works
+
+```
+import 'videojs-quality-selector-hls/dist/videojs-quality-selector-hls.min';
+```
+
 
 ## Options
 
