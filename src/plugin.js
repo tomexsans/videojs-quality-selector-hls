@@ -3,7 +3,7 @@ import {version as VERSION} from '../package.json';
 import ConcreteButton from './ConcreteButton';
 import ConcreteMenuItem from './ConcreteMenuItem';
 
-const Plugin = videojs.getPlugin('plugin');
+// const Plugin = videojs.getPlugin('plugin');
 
 // Default options for the plugin.
 const defaults = {
@@ -17,7 +17,7 @@ const defaults = {
  *
  * See: https://blog.videojs.com/feature-spotlight-advanced-plugins/
  */
-class QualitySelectorHls extends Plugin {
+class QualitySelectorHlsClass {
 
   /**
    * Create a QualitySelectorHls plugin instance.
@@ -34,13 +34,10 @@ class QualitySelectorHls extends Plugin {
    */
   constructor(player, options) {
     // the parent class will add player under this.player
-
-    super(player);
-
     this.player = player;
     this.config = videojs.obj.merge(defaults, options);
 
-    this.player.ready(() => {
+    player.ready(() => {
       this.player.addClass('vjs-quality-selector-hls');
 
       if (this.player.qualityLevels) {
@@ -112,7 +109,7 @@ class QualitySelectorHls extends Plugin {
   getQualityMenuItem(item) {
     const player = this.player;
 
-    return new ConcreteMenuItem(player, item, this._qualityButton, this);
+    return ConcreteMenuItem(player, item, this._qualityButton, this);
   }
 
   /**
@@ -208,11 +205,22 @@ class QualitySelectorHls extends Plugin {
 
 }
 
-// Define default values for the plugin's `state` object here.
-QualitySelectorHls.defaultState = {};
+const initPlugin = function(player, options) {
+  const QualitySelectorHls = new QualitySelectorHlsClass(player, options);
 
-// Include the version number.
-QualitySelectorHls.VERSION = VERSION;
+  player.QualitySelectorHlsVjs = true;
+  // Define default values for the plugin's `state` object here.
+  QualitySelectorHls.defaultState = {};
+
+  // Include the version number.
+  QualitySelectorHls.VERSION = VERSION;
+
+  return QualitySelectorHls;
+};
+
+const QualitySelectorHls = function(options) {
+  return initPlugin(this, videojs.obj.merge({}, options));
+};
 
 // Register the plugin with video.js.
 videojs.registerPlugin('qualitySelectorHls', QualitySelectorHls);

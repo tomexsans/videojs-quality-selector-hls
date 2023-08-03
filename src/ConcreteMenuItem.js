@@ -4,41 +4,44 @@ import videojs from 'video.js';
 const VideoJsMenuItemClass = videojs.getComponent('MenuItem');
 
 /**
- * Extend vjs menu item class.
+ * Create a QualitySelectorHls plugin instance.
+ *
+ * @param  {player} player
+ *         A Video.js Player instance.
+ *
+ * @param  {item} [item]
+ *         The Item Quality Item
+ *
+ * @param  {qualityButton} [qualityButton]
+ *         ConcreteButton
+ *
+ * @param  {plugin} plugin
+ *         Plugin
+ *
+ * @return {MenuItem} MenuItem
+ *         VideoJS Menu Item Class
  */
-export default class ConcreteMenuItem extends VideoJsMenuItemClass {
+export default function ConcreteMenuItem(player, item, qualityButton, plugin) {
 
-  /**
-  * Menu item constructor.
-  *
-  * @param {Player} player - vjs player
-  * @param {Object} item - Item object
-  * @param {ConcreteButton} qualityButton - The containing button.
-  * @param {HlsQualitySelectorPlugin} plugin - This plugin instance.
-  */
-  constructor(player, item, qualityButton, plugin) {
-    super(player, {
-      label: item.label,
-      selectable: true,
-      selected: item.selected || false
-    });
-    this.item = item;
-    this.qualityButton = qualityButton;
-    this.plugin = plugin;
-  }
+  const ConcreteMenuItemInit = new VideoJsMenuItemClass(player, {
+    label: item.label,
+    selectable: true,
+    selected: item.selected || false
+  });
 
-  /**
-  * Click event for menu item.
-  */
-  handleClick() {
+  ConcreteMenuItemInit.item = item;
+  ConcreteMenuItemInit.qualityButton = qualityButton;
+  ConcreteMenuItemInit.plugin = plugin;
 
+  ConcreteMenuItemInit.handleClick = function() {
     // Reset other menu items selected status.
     for (let i = 0; i < this.qualityButton.items.length; ++i) {
       this.qualityButton.items[i].selected(false);
     }
-
     // Set this menu item to selected, and set quality.
     this.plugin.setQuality(this.item.value);
     this.selected(true);
-  }
+  };
+
+  return ConcreteMenuItemInit;
 }

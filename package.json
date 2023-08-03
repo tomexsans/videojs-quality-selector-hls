@@ -1,6 +1,6 @@
 {
   "name": "videojs-quality-selector-hls",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a Plugin For VideoJS 8+ To select Quality on the Video if available",
   "main": "cjs/plugin.js",
   "module": "es/plugin.js",

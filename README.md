@@ -33,7 +33,7 @@ npm i videojs-contrib-quality-levels
   - [`<script>` Tag](#script-tag)
   - [Browserify/CommonJS](#browserifycommonjs)
   - [RequireJS/AMD](#requirejsamd)
-  - [ES IMPORTS](#es-imports)
+  - [VueJS3](#vuejs3)
 - [Options](#options)
   - [displayCurrentQuality - `boolean` - _false_](#displaycurrentquality---boolean---_false_)
   - [placementIndex - `integer`](#placementindex---integer)
@@ -94,17 +94,25 @@ require(['video.js', 'videojs-quality-selector-hls'], function(videojs) {
 });
 ```
 
-### ES IMPORTS
+### VueJS3
 
-for some reasons es imports has an error
+```js
+<script setup>
+import 'video.js/dist/video-js.css'
+import { ref,onMounted } from 'vue';
+import videojs from 'video.js';
+import 'videojs-contrib-quality-levels';
+import qalitySelectorHls from 'videojs-quality-selector-hls'
 
-```
-class constructors must be invoked with 'new'
-```
-this is how videojs Handles the imports via the Plugin, for the mean time importing the min file directly works
+const videoPlayer = ref(null)
 
-```
-import 'videojs-quality-selector-hls/dist/videojs-quality-selector-hls.min';
+onMounted(()=>{
+  // In case an error where qualitySelectorHls not found
+  videojs.registerPlugin('qalitySelectorHls',qalitySelectorHls);
+  const player = videojs(videoPlayer.value)
+  player.qalitySelectorHls()
+})
+</script>
 ```
 
 
