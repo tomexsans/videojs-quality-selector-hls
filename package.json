@@ -36,7 +36,7 @@
     "prepublishOnly": "npm-run-all build-prod && vjsverify --verbose --skip-es-check"
   },
   "engines": {
-    "node": ">=19",
+    "node": ">=18",
     "npm": ">=9"
   },
   "keywords": [
