@@ -102,15 +102,15 @@ import 'video.js/dist/video-js.css'
 import { ref,onMounted } from 'vue';
 import videojs from 'video.js';
 import 'videojs-contrib-quality-levels';
-import qalitySelectorHls from 'videojs-quality-selector-hls'
+import qualitySelectorHls from 'videojs-quality-selector-hls'
 
 const videoPlayer = ref(null)
 
 onMounted(()=>{
   // In case an error where qualitySelectorHls not found
-  videojs.registerPlugin('qalitySelectorHls',qalitySelectorHls);
+  videojs.registerPlugin('qualitySelectorHls',qualitySelectorHls);
   const player = videojs(videoPlayer.value)
-  player.qalitySelectorHls()
+  player.qualitySelectorHls()
 })
 </script>
 ```
