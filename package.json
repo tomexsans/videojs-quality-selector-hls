@@ -77,7 +77,7 @@
   },
   "dependencies": {
     "global": "^4.4.0",
-    "video.js": "^8.3.0",
+    "video.js": "^8.5.2",
     "videojs-contrib-quality-levels": "^4.0.0"
   },
   "devDependencies": {
